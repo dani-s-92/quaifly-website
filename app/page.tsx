@@ -55,8 +55,8 @@ export default function Home() {
       >
         <h1
           className="text-4xl md:text-6xl text-highlight font-medium 
-            before:content-[''] before:bg-[url(/brush.svg)] before:bg-contain before:bg-no-repeat before:bg-center before:absolute before:-z-10
-            before:top-0 before:bottom-0 before:left-0 before:right-0 before:scale-x-[3] before:scale-y-[1.2] before:opacity-20"
+            before:content-[''] before:bg-[url(/brush_grey.svg)] before:bg-contain before:bg-no-repeat before:bg-center before:absolute before:-z-10
+            before:top-0 before:bottom-0 before:left-0 before:right-0 before:scale-x-[4.5] before:scale-y-[1.8] before:opacity-20"
           data-aos="fade-up"
           data-aos-duration="1000"
           data-aos-delay="300"
