@@ -122,6 +122,7 @@ export default function Home() {
         >
           We are driven by a strong, supportive, and fun community. Organic,
           transparent growth, and passion for expanding the Quai ecosystem.
+          Join us on that mission!  
         </p>
       </section>
 
@@ -132,7 +133,7 @@ export default function Home() {
           data-aos-duration="1000"
           data-aos-delay="200"
         >
-          Join The Swarm
+          Join The Swarm!
         </h1>
         <p
           className="text-xl text-center"
@@ -140,7 +141,7 @@ export default function Home() {
           data-aos-duration="1000"
           data-aos-delay="200"
         >
-          Embrace the memes, and let&apos;s fly toward a brighter decentralized
+          Embrace the memes, and let&apos;s $FLY towards a brighter decentralized
           world.
         </p>
         <p
@@ -149,7 +150,7 @@ export default function Home() {
           data-aos-duration="1000"
           data-aos-delay="200"
         >
-          LFF — Let’s Fucking $FLY!
+          #LFF — Let’s Fucking $FLY!
         </p>
         <p
           className="text-sm md:text-xl"
@@ -157,7 +158,7 @@ export default function Home() {
           data-aos-duration="1000"
           data-aos-delay="200"
         >
-          CA: 0x6e77fAeF579419b2e6813fB7D71847b243Aa9dB6
+          CA: 0x0040198bD115CBC1ce165327B26af1a6d30fAc3E
         </p>
 
         <div
@@ -201,7 +202,7 @@ export default function Home() {
           data-aos-duration="1000"
           data-aos-delay="200"
         >
-          Where Passion Takes Flight <br /> Meet Quaifly!
+          Where Passion FLYs<br /> Meet QuaiFly!
         </h2>
 
         <div className="w-screen flex flex-col md:flex-row px-4 md:px-16 lg:px-40 md:mt-56">
@@ -335,7 +336,7 @@ export default function Home() {
         </div>
 
         <Image
-          src="/logo-big.jpg"
+          src="/logo white.jpg"
           alt="QuaiFly logo"
           width={326}
           height={326}
