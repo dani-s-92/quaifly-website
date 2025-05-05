@@ -225,7 +225,7 @@ export default function Home() {
             data-aos-duration="1000"
             data-aos-delay="300"
           >
-            <Image src="/1.png" alt="QuaiFly Mascot" width={100} height={90} />
+            <Image src="/2.png" alt="QuaiFly Mascot" width={100} height={90} />
             <h3 className="mt-16 mb-4 text-2xl">Our Values</h3>
             <p className="text-shade-2 text-xl">
               We stand for helping each other grow, staying real and
@@ -238,7 +238,7 @@ export default function Home() {
             data-aos-duration="1000"
             data-aos-delay="400"
           >
-            <Image src="/3.png" alt="QuaiFly Mascot" width={100} height={90} />
+            <Image src="/2.png" alt="QuaiFly Mascot" width={100} height={90} />
             <h3 className="mt-16 mb-4 text-2xl">Join The Swarm</h3>
             <p className="text-shade-2 text-xl">
               Ready to fly with us? Join our community, share the memes, and
@@ -353,7 +353,7 @@ export default function Home() {
             data-aos-duration="1000"
             data-aos-delay="200"
           >
-            <Image src="/4.jpg" alt="QuaiFly mascot" width={70} height={56} />
+            <Image src="/5.jpg" alt="QuaiFly mascot" width={70} height={56} />
             <div className="flex flex-col ml-8">
               <p>
                 “Quai fly set some new standards for memecoins on @QuaiNetwork”
@@ -369,7 +369,7 @@ export default function Home() {
             data-aos-duration="1000"
             data-aos-delay="200"
           >
-            <Image src="/6.jpg" alt="QuaiFly mascot" width={70} height={56} />
+            <Image src="/5.jpg" alt="QuaiFly mascot" width={70} height={56} />
             <div className="flex flex-col ml-8">
               <p>“Yeah, $FLY is bring those vibes we love to see.”</p>
               <p className="mt-4">
