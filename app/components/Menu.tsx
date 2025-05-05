@@ -35,7 +35,7 @@ const Menu = () => {
       data-aos-duration="1000"
       data-aos-delay="200"
     >
-      <Image src="/logo white.jpg" alt="QuaiFly Logo" width={60} height={60} />
+      <Image src="/Q_FLY_red.jpg" alt="QuaiFly Logo" width={60} height={60} />
 
       <div>
         <a

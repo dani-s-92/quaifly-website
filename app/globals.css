@@ -44,6 +44,7 @@ body {
   }
 }
 
+/* Swarm animation for mobile screen */
 #swarm {
   animation: flying-mobile 10s steps(250) infinite;
 }
@@ -100,11 +101,12 @@ body {
   }
 
   100% {
-    transform: translate(115vw, -4vh) scale(0.4);
+    transform: translate(115vw, -40vh) scale(0.4);
     opacity: 0;
   }
 }
 
+/* Swarm animation for medium screen */
 @media (width >= 768px) {
   #swarm {
     animation: flying-md 10s steps(250) infinite;
@@ -168,6 +170,7 @@ body {
   }
 }
 
+/* Swarm animation for large screen */
 @media (width >= 1024px) and (max-height: 600) {
   #swarm {
     animation: flying-lg 10s steps(250) infinite;
@@ -231,6 +234,7 @@ body {
   }
 }
 
+/* Swarm animation for large tablets screen */
 @media (width >= 1024px) and (min-height: 601) {
   #swarm {
     animation: flying-lg-tabs 10s steps(250) infinite;
@@ -294,6 +298,7 @@ body {
   }
 }
 
+/* Swarm animation for xl screen */
 @media (width >= 1280px) {
   #swarm {
     animation: flying-xl 10s steps(250) infinite;
@@ -363,6 +368,7 @@ body {
   }
 }
 
+/* Swarm animation for xxl screen screen */
 @keyframes flying-2xl {
   0% {
     transform: translate(0, 0) scale(1.5);
