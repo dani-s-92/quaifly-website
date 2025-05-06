@@ -202,7 +202,7 @@ export default function Home() {
           data-aos-duration="1000"
           data-aos-delay="200"
         >
-          Where Passion FLYs<br /> Meet QuaiFly!
+          Where Passion $FLYs!<br /> Meet QuaiFly!
         </h2>
 
         <div className="w-screen flex flex-col md:flex-row px-4 md:px-16 lg:px-40 md:mt-56">
@@ -313,19 +313,12 @@ export default function Home() {
             </li>
             <li>✅ 3. Send $QUAI to your wallet</li>
             <li>
-              ✅ 4. Checkout our 2 pools both on{' '}
+              ✅ 4. Checkout our pool on{' '}
               <a
                 href="https://quaiswap.io/"
                 className="text-highlight hover:text-blue-500"
               >
                 QuaiSwap
-              </a>{' '}
-              and{' '}
-              <a
-                href="https://quai.icecreamswap.com/swap"
-                className="text-highlight hover:text-blue-500"
-              >
-                
               </a>
               . Just swap $QUAI for $FLY — easy as pie!
             </li>
