@@ -348,6 +348,22 @@ export default function Home() {
 
       <section className="w-screen flex flex-col justify-center items-center mb-24 text-xl overflow-hidden">
         <div className="flex flex-col md:flex-row mb-16">
+
+          <div
+            className="flex flex-col md:flex-row items-center md:w-[300px] lg:w-[400px] mx-4 md:mx-8 lg:mx-16"
+            data-aos="fade-left"
+            data-aos-duration="1000"
+            data-aos-delay="200"
+          >
+            <Image src="/5.jpg" alt="QuaiFly mascot" width={70} height={56} />
+            <div className="flex flex-col ml-8">
+              <p>“$FLY on $QUAI”</p>
+              <p className="mt-4">
+                @basedpavel<span className="text-shade-2">Quai Team</span>
+              </p>
+            </div>
+          </div>
+
           <div
             className="flex flex-col md:flex-row items-center md:w-[300px] lg:w-[400px] mx-4 md:mx-8 lg:mx-16 mb-16 md:mb-0"
             data-aos="fade-right"
@@ -357,10 +373,10 @@ export default function Home() {
             <Image src="/5.jpg" alt="QuaiFly mascot" width={70} height={56} />
             <div className="flex flex-col ml-8">
               <p>
-                “Quai fly set some new standards for memecoins on @QuaiNetwork”
+                “QuaiFly thrives on the essentials: real community, no empty promises.”
               </p>
               <p className="mt-4">
-                Matt Poletiek <span className="text-shade-2">Quai Team</span>
+                @Felixx86 <span className="text-shade-2">Quai Community</span>
               </p>
             </div>
           </div>
@@ -372,12 +388,31 @@ export default function Home() {
           >
             <Image src="/5.jpg" alt="QuaiFly mascot" width={70} height={56} />
             <div className="flex flex-col ml-8">
-              <p>“Yeah, $FLY is bring those vibes we love to see.”</p>
+              <p>“@QuaiFly appears to be a community-drive or meme-based project built on the @QuaiNetwork, a Layer-1 blockchain known for scalability, speed, and dual-token system ( $QUAI and $QI). The $FLY token is native token of @QuaiFly, and recent X posts suggest it's gaining traction within the $QUAI ecosystem...”</p>
               <p className="mt-4">
-                EgoEgo <span className="text-shade-2">Quai Community</span>
+                @niole_on_chain<span className="text-shade-2">Quai Community</span>
               </p>
             </div>
           </div>
+
+          <div
+            className="flex flex-col md:flex-row items-center md:w-[300px] lg:w-[400px] mx-4 md:mx-8 lg:mx-16"
+            data-aos="fade-left"
+            data-aos-duration="1000"
+            data-aos-delay="200"
+          >
+            <Image src="/5.jpg" alt="QuaiFly mascot" width={70} height={56} />
+            <div className="flex flex-col ml-8">
+              <p>“always ready to $FLY”</p>
+              <p className="mt-4">
+                @tonwontonwon<span className="text-shade-2">Quai Community</span>
+              </p>
+            </div>
+          </div>
+
+          
+
+
         </div>
 
         <div
