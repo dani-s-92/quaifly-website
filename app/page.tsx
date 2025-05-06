@@ -381,7 +381,7 @@ export default function Home() {
           >
             <Image src="/5.jpg" alt="QuaiFly mascot" width={70} height={56} />
             <div className="flex flex-col ml-8">
-              <p>“@QuaiFly appears to be a community-drive or meme-based project built on the @QuaiNetwork, a Layer-1 blockchain known for scalability, speed, and dual-token system ( $QUAI and $QI). The $FLY token is native token of @QuaiFly, and recent X posts suggest it's gaining traction within the $QUAI ecosystem...”</p>
+              <p>“@QuaiFly appears to be a community-drive or meme-based project built on the @QuaiNetwork, a Layer-1 blockchain known for scalability, speed, and dual-token system ( $QUAI and $QI). The $FLY token is native token of @QuaiFly, and recent X posts suggest it&apos;s gaining traction within the $QUAI ecosystem...”</p>
               <p className="mt-4">
                 @niole_on_chain<span className="text-shade-2">Quai Community</span>
               </p>
