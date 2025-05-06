@@ -336,7 +336,7 @@ export default function Home() {
         </div>
 
         <Image
-          src="/logo white.jpg"
+          src="/Q_FLY_red.png"
           alt="QuaiFly logo"
           width={326}
           height={326}
