@@ -324,7 +324,7 @@ export default function Home() {
             </li>
           </ul>
           <p className="mt-4">
-            😎 The future is $FLY. Be part of the movement.
+            😎 The future is $FLY. Be part of the movement.  
           </p>
         </div>
 
