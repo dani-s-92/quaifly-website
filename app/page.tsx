@@ -325,7 +325,7 @@ export default function Home() {
                 href="https://quai.icecreamswap.com/swap"
                 className="text-highlight hover:text-blue-500"
               >
-                IcecreamSwap
+                
               </a>
               . Just swap $QUAI for $FLY — easy as pie!
             </li>
