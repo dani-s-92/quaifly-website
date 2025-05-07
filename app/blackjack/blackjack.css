@@ -1,0 +1,258 @@
+body {
+    background-color: #1c1c1c; /* ✅ Set your desired background color */
+    margin: 0; /* ✅ Removes extra space */
+    padding: 0;
+    min-height: 100vh; /* ✅ Ensures background covers full height */
+}
+
+.balance-container {
+    position: absolute;
+    top: 25px;  /* 🆙 Erhöht Abstand nach oben */
+    left: 20px; /* 🆙 Erhöht Abstand nach links */
+    color: white;
+    font-size: 15px;
+    font-weight: lighter;
+}
+
+.balance-container p {
+    margin-bottom: 0px; /* 🔽 Reduziert Abstand zwischen den Zeilen */
+}
+
+.blackjack-header {
+    position: relative; /* ✅ Verhindert Überlappungen */
+    width: 100%;
+    text-align: center;
+    font-size: 22px;
+    font-weight: bold;
+    margin-top: 50px; /* 🔽 Fügt mehr Abstand nach oben hinzu */
+    color: white;
+}
+
+.refresh-button-container {
+    position: absolute;
+    top: 80px; /* 🆙 Moves it higher */
+    left: 15px; /* 🆙 Aligns to the left */
+}
+
+.refresh-button-container button {
+    background-color: red; /* 🎨 Optional: Make it stand out */
+    font-size: 16px;
+    padding: 10px 15px;
+    border-radius: 8px;
+    font-weight: bold;
+}
+
+.blackjack-game {
+    position: relative; /* ✅ Verhindert Überlappungen */
+    width: 100%;
+    text-align: center;
+    font-size: 22px;
+    font-weight: bold;
+    margin-top: 10px; /* 🔽 Fügt mehr Abstand nach oben hinzu */
+    color: white;
+}
+
+.bet-container {
+    display: flex;
+    flex-direction: column; /* ✅ Input above button */
+    align-items: center;
+    gap: 10px; /* 🔽 Adds space between input & button */
+    margin-top: 20px; /* 🆙 Adds space above */
+}
+
+.bet-input {
+    height: 40px;
+    width: 200px;
+    background-color: #d3d3d3; /* 🎨 Light gray background */
+    border: none;
+    border-radius: 8px;
+    padding: 10px;
+    font-size: 16px;
+    text-align: center;
+}
+
+.cards-game {
+    position: relative; /* ✅ Verhindert Überlappungen */
+    width: 100%;
+    text-align: left;
+    font-size: 22px;
+    font-weight: bold;
+    margin-top: 100px; /* 🔽 Fügt mehr Abstand nach oben hinzu */
+    color: white;
+}
+
+.fly-image {
+    width: 20%; /* ✅ Adjust size as needed */
+    max-width: 200px; /* ✅ Prevents oversized images */
+    display: block;
+    margin: 20px auto; /* 🆙 Centers with spacing */
+    border-radius: 5px; /* ✅ Optional: Adds rounded edges */
+}
+
+
+.transaction-container {
+    display: flex;
+    flex-direction: column; /* ✅ Ensures everything is stacked */
+    align-items: center; /* ✅ Centers horizontally */
+    justify-content: center; /* ✅ Centers vertically */
+    width: 40%; /* ✅ Adjust width */
+    margin: 50px auto; /* 🆙 Centers in the page */
+}
+
+.input-row, .button-row {
+    display: flex;
+    justify-content: center; /* ✅ Ensures buttons are centered */
+    align-items: center;
+    gap: 10px; /* ✅ Adds space between fields/buttons */
+    width: 100%; /* ✅ Makes sure everything aligns */
+}
+
+.input-row input, .button-row button {
+    flex: 1; /* ✅ Ensures both inputs & buttons are equal in size */
+    text-align: center; /* ✅ Centers text inside */
+}
+
+/* 🎲 Blackjack Table Background */
+.blackjack-page {
+    display: flex;
+    flex-direction: column; /* ✅ Stellt sicher, dass alle Elemente untereinander stehen */
+    align-items: center; /* ✅ Zentriert die Elemente */
+    justify-content: flex-start; /* ✅ Startet oben */
+    width: 100%;
+    min-height: 100vh;
+    padding-top: 50px; /* 🆙 Fügt Abstand nach oben hinzu */
+}
+
+/* 🃏 Card Styling */
+.card {
+    display: inline-block;
+    width: 100px;
+    height: 150px;
+    background-color: white;
+    border-radius: 10px;
+    text-align: center;
+    font-size: 20px;
+    font-weight: bold;
+    padding: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+}
+
+/* 🎯 Button Styles */
+button {
+    background-color: red;
+    color: white;
+    border: 10px;
+    padding: 10px 20px;
+    font-size: 18px;
+    font-weight: bold;
+    border-radius: 10px;
+    cursor: pointer;
+    justify-content: left; /* ✅ Centers buttons horizontally */
+    align-items: left; /* ✅ Aligns buttons evenly */
+    margin: 10px; /* ✅ Adds space between buttons */
+    transition: transform 0.2s ease, background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: red;
+    transform: scale(1.05);
+}
+
+/* 🎲 Special Styling for Blackjack Actions */
+.blackjack-actions {
+    display: flex;
+    justify-content: center; /* ✅ Centers buttons horizontally */
+    align-items: center; /* ✅ Aligns buttons evenly */
+    gap: 15px;
+    margin-top: 50px;
+    /*margin: 100px; /* ✅ Adds space between buttons */
+}
+
+/* 🔥 Smooth Fade-in Animation */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.blackjack-page h1, .blackjack-page p {
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+.connect-button-container {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}
+
+.connect-button {
+    font-family: "Arial", sans-serif;
+    font-size: 16px;
+}
+
+.connected-button {
+    font-family: "Courier New", monospace; /* ✅ Changes font when connected */
+    font-weight: bold;
+    color: green;
+}
+
+input {
+    height: 40px; /* 🆙 Makes the input taller */
+    width: 200px; /* ✅ Adjusts length */
+    background-color: #d3d3d3; /* 🎨 Light gray background */
+    border: none;
+    border-radius: 8px; /* ✅ Smooth rounded edges */
+    padding: 10px;
+    font-size: 16px; /* 🆙 Improves readability */
+    text-align: center;
+}
+
+.hand-container {
+    display: flex;
+    justify-content: space-between;
+    margin: 20px 20px;
+}
+  
+.dealer-hand-container,
+.player-hand-container {
+    width: 45%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    background-color: #727272;
+}
+
+.cards {
+    display: flex;
+    align-items: center;
+}
+
+
+.card {
+    background-color: white;  /* Ensure cards have a white background */
+    border: 1px solid #ccc;
+    padding: 10px 10px;
+    font-size: 0.8em;
+    text-align: left;  /* Align text to the left */
+    /* Apply a negative margin to create the overlapping effect */
+    margin-left: -50px;
+    /* Optional: add a bit of a shadow for depth */
+    box-shadow: 0 2px 3px rgba(0,0,0,0.1);
+    /* Ensure the cards stack correctly (later cards appear in front) */
+    z-index: auto;
+}
+
+/* Prevent the first card from having a negative margin */
+.cards .card:first-child {
+    margin-left: 0;
+} 
+
+.hand-value {
+    margin-top: 10px;
+    text-align: right;
+    font-weight: bold;
+    color: #333;
+}
+
+.message {
+    color: white;
+    text-align: center;
+}

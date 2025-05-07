@@ -412,7 +412,7 @@ export default function Home() {
           data-aos-delay="200"
         >
           <Image src="/5.jpg" alt="QuaiFly mascot" width={70} height={56} />
-          <p className="mt-8">“LFF FLYs. Y’all are killing it”</p>
+          <p className="mt-8">“#LFF FLYs. Y’all are killing it”</p>
         </div>
       </section>
     </main>
