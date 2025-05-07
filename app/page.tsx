@@ -340,7 +340,7 @@ export default function Home() {
       </section>
 
       <section className="w-screen flex flex-col justify-center items-center mb-24 text-xl overflow-hidden">
-      <div className="flex flex-wrap justify-center gap-8 md:gap-12 max-w-[850px] mx-auto">
+        <div className="flex flex-col md:flex-row mb-16">
 
           <div
             className="flex flex-col md:flex-row items-center md:w-[300px] lg:w-[400px] mx-4 md:mx-8 lg:mx-16"
