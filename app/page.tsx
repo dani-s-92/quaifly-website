@@ -340,7 +340,7 @@ export default function Home() {
       </section>
 
       <section className="w-screen flex flex-col justify-center items-center mb-24 text-xl overflow-hidden">
-        <div className="flex flex-col md:flex-row mb-16">
+      <div className="flex flex-wrap justify-center gap-8 md:gap-12 max-w-[850px] mx-auto">
 
           <div
             className="flex flex-col md:flex-row items-center md:w-[300px] lg:w-[400px] mx-4 md:mx-8 lg:mx-16"
@@ -352,7 +352,7 @@ export default function Home() {
             <div className="flex flex-col ml-8">
               <p>“$FLY on $QUAI”</p>
               <p className="mt-4">
-                @basedpavel<span className="text-shade-2">Quai Team</span>
+                @basedpavel <span className="text-shade-2">Quai Team</span>
               </p>
             </div>
           </div>
@@ -383,7 +383,7 @@ export default function Home() {
             <div className="flex flex-col ml-8">
               <p>“@QuaiFly appears to be a community-drive or meme-based project built on the @QuaiNetwork, a Layer-1 blockchain known for scalability, speed, and dual-token system ( $QUAI and $QI). The $FLY token is native token of @QuaiFly, and recent X posts suggest it&apos;s gaining traction within the $QUAI ecosystem...”</p>
               <p className="mt-4">
-                @niole_on_chain<span className="text-shade-2">Quai Community</span>
+                @niole_on_chain <span className="text-shade-2">Quai Community</span>
               </p>
             </div>
           </div>
@@ -398,7 +398,7 @@ export default function Home() {
             <div className="flex flex-col ml-8">
               <p>“always ready to $FLY”</p>
               <p className="mt-4">
-                @tonwontonwon<span className="text-shade-2">Quai Community</span>
+                @tonwontonwon <span className="text-shade-2">Quai Community</span>
               </p>
             </div>
           </div>
