@@ -340,10 +340,10 @@ export default function Home() {
       </section>
 
       <section className="w-screen flex flex-col justify-center items-center mb-24 text-xl overflow-hidden">
-      <div className="flex flex-wrap justify-center gap-8 max-w-[800px] mx-auto">
-        
+        <div className="flex flex-wrap justify-center gap-8 md:gap-12">
+
           <div
-            className="flex flex-col md:flex-row items-center md:w-[300px] lg:w-[400px] mx-4 md:mx-8 lg:mx-16"
+            className="flex flex-col md:flex-row max-w-[300px] lg:max-w-[400px] mx-4"
             data-aos="fade-left"
             data-aos-duration="1000"
             data-aos-delay="200"
@@ -358,7 +358,8 @@ export default function Home() {
           </div>
 
           <div
-            className="flex flex-col md:flex-row items-center md:w-[300px] lg:w-[400px] mx-4 md:mx-8 lg:mx-16 mb-16 md:mb-0"
+            className="flex flex-col md:flex-row max-w-[300px] lg:max-w-[400px] mx-4"
+
             data-aos="fade-right"
             data-aos-duration="1000"
             data-aos-delay="200"
@@ -374,7 +375,8 @@ export default function Home() {
             </div>
           </div>
           <div
-            className="flex flex-col md:flex-row items-center md:w-[300px] lg:w-[400px] mx-4 md:mx-8 lg:mx-16"
+            className="flex flex-col md:flex-row max-w-[300px] lg:max-w-[400px] mx-4"
+
             data-aos="fade-left"
             data-aos-duration="1000"
             data-aos-delay="200"
@@ -389,7 +391,8 @@ export default function Home() {
           </div>
 
           <div
-            className="flex flex-col md:flex-row items-center md:w-[300px] lg:w-[400px] mx-4 md:mx-8 lg:mx-16"
+            className="flex flex-col md:flex-row max-w-[300px] lg:max-w-[400px] mx-4"
+
             data-aos="fade-left"
             data-aos-duration="1000"
             data-aos-delay="200"
@@ -412,7 +415,7 @@ export default function Home() {
           data-aos-delay="200"
         >
           <Image src="/5.jpg" alt="QuaiFly mascot" width={70} height={56} />
-          <p className="mt-8">“Congrats Quai FLY. Y’all are killing it”</p>
+          <p className="mt-8">“LFF $FLYs. Y’all are killing it”</p>
         </div>
       </section>
     </main>
