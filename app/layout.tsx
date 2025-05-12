@@ -1,6 +1,6 @@
 import type { Metadata } from 'next'
 import { Plus_Jakarta_Sans } from 'next/font/google'
-import './globals.css'
+import './global.css'
 import Menu from './components/Menu'
 import { ReactLenis } from './utils/lenis'
 import Footer from './components/Footer'
