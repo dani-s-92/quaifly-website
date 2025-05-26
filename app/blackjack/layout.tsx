@@ -1,11 +1,11 @@
-import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import type { Metadata } from 'next';
+import { Inter } from 'next/font/google';
 
-const inter = Inter({ subsets: ["latin"] });
+const inter = Inter({ subsets: ['latin'], display: 'swap' });
 
 export const metadata: Metadata = {
-  title: "Welcome to QuaiFly!",
-  description: "Welcome to QuaiFly!",
+  title: 'Welcome to QuaiFly!',
+  description: 'Welcome to QuaiFly!',
 };
 
 export default function RootLayout({
@@ -14,8 +14,14 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
-      <body className={inter.className}>{children}</body>
+    <html lang="en" suppressHydrationWarning>
+      <body
+        className={inter.className}
+        // Suppress hydration warnings for the body as a fallback
+        suppressHydrationWarning
+      >
+        {children}
+      </body>
     </html>
   );
 }
