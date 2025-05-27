@@ -1,10 +1,11 @@
 "use client";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { ethers } from "ethers";
 import { quais } from "quais";
 import "./blackjack.css";
 import { BlackjackContractAdress, BlackjackABI } from "./BlackjackContractInformation";
 import axios from "axios";
+import Image from 'next/image'; // Added for optimized image
 
 const contractAddress: string = BlackjackContractAdress;
 const contractABI: quais.InterfaceAbi = BlackjackABI;
@@ -13,12 +14,12 @@ type Card = { suit: string; value: number; name: string };
 
 declare global {
   interface Window {
-    pelagus?: any; // MetaMask or Pelagus
+    pelagus?: any; // MetaMask or Pelagus // eslint-disable-next-line @typescript-eslint/no-explicit-any
   }
 }
 
 export default function Blackjack() {
-  const [address, setAddress] = useState<string>("")
+  const [address, setAddress] = useState<string>("");
   const [playerBalance, setPlayerBalance] = useState<string>("0"); // Backend balance
   const [gameBalance, setGameBalance] = useState<string>("0"); // Backend gameBalance
   const [playerHand, setPlayerHand] = useState<Card[]>([]);
@@ -65,7 +66,7 @@ export default function Blackjack() {
           const signer = await provider.getSigner();
           setSigner(signer);
         }
-      } catch (err: any) {
+      } catch (err: unknown) {
         console.error("Failed to validate token:", err);
         localStorage.removeItem("token"); // Clear invalid token
         setMessage("❌ Session expired. Please reconnect wallet.");
@@ -90,6 +91,7 @@ export default function Blackjack() {
       setContract(blackjackContract);
 
       const address = await signer.getAddress();
+      setAddress(address); // Use the address
       setShortAddress(`${address.slice(0, 6)}...${address.slice(-4)}`);
 
       // Get nonce from backend
@@ -103,33 +105,34 @@ export default function Blackjack() {
       // Login to backend
       const loginRes = await axios.post(`${API_URL}/auth/login`, { address, signature });
       localStorage.setItem("token", loginRes.data.token);
-      setAddress(address);
       setWalletConnected(true);
       setMessage("✅ Wallet connected!");
 
       // Fetch balances
       await fetchBalances();
-    } catch (err: any) {
+    } catch (err: unknown) {
       console.error("Wallet connection failed:", err);
-      setMessage(err.response?.data?.error || "❌ Failed to connect wallet");
+      const errorMessage = err instanceof Error ? err.message : "Unknown error";
+      setMessage((err as any)?.response?.data?.error || "❌ Failed to connect wallet");
     }
   };
 
   // Fetch balances from backend
-  const fetchBalances = async () => {
+  const fetchBalances = useCallback(async () => {
     if (!walletConnected) return;
     try {
       const token = localStorage.getItem("token");
+      if (!token) throw new Error("No token found");
       const res = await axios.get(`${API_URL}/auth/balance`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       setPlayerBalance(res.data.user.balance);
       setGameBalance(res.data.user.gameBalance);
-    } catch (err) {
+    } catch (err: unknown) {
       console.error("Failed to fetch balances:", err);
       setMessage("❌ Failed to fetch balances");
     }
-  };
+  }, [walletConnected]);
 
   // Refresh balances
   const refreshWalletBalance = async () => {
@@ -138,7 +141,7 @@ export default function Blackjack() {
       return;
     }
     await fetchBalances();
-    setMessage(`✅ Balances updated: ${Number(playerBalance).toFixed(2)} QUAI (Wallet), ${gameBalance} QUAI (Game)`);
+    setMessage(`✅ Balances updated: ${Number(playerBalance).toFixed(2)} QUAI (Wallet), ${Number(gameBalance).toFixed(2)} QUAI (Game)`);
   };
 
   // Handle deposit (mocked, as backend doesn't support this yet)
@@ -146,13 +149,13 @@ export default function Blackjack() {
     setDepositBtnLoading(true);
     if (!contract || !signer) {
       setMessage("❌ Wallet not connected!");
-      setDepositBtnLoading(false)
+      setDepositBtnLoading(false);
       return;
     }
 
     if (!depositAmount || parseFloat(depositAmount) <= 0) {
       setMessage("❌ Please enter a valid deposit amount!");
-      setDepositBtnLoading(false)
+      setDepositBtnLoading(false);
       return;
     }
 
@@ -165,15 +168,14 @@ export default function Blackjack() {
 
       setMessage(`✅ Deposited ${depositAmount} QUAI successfully!`);
       setTimeout(() => {
-        refreshWalletBalance()
+        refreshWalletBalance();
       }, 2000);
-      setDepositAmount("")
-      
-    } catch (error) {
-        console.error("Deposit failed:", error);
-        setMessage("❌ Deposit failed!");
+      setDepositAmount("");
+    } catch (error: unknown) {
+      console.error("Deposit failed:", error);
+      setMessage("❌ Deposit failed!");
     }
-    setDepositBtnLoading(false)
+    setDepositBtnLoading(false);
   };
 
   // Handle withdraw (mocked, as backend doesn't support this yet)
@@ -181,39 +183,40 @@ export default function Blackjack() {
     setWithdrawBtnLoading(true);
     if (!withdrawAmount || parseFloat(withdrawAmount) <= 0) {
       setMessage("❌ Please enter a valid withdraw amount!");
+      setWithdrawBtnLoading(false);
       return;
     }
 
     try {
       const token = localStorage.getItem("token");
-      // Check if token exists
       if (!token) {
         setMessage("❌ Authentication token not found. Please log in.");
         setWithdrawBtnLoading(false);
         return;
       }
 
-      if (withdrawAmount > playerBalance) {
+      const withdrawValue = parseFloat(withdrawAmount);
+      const balanceValue = parseFloat(playerBalance);
+      if (withdrawValue > balanceValue) {
         setMessage("⚠️ Not enough withdraw amount");
         setWithdrawBtnLoading(false);
         return;
       }
 
-      // Make API request with correct Axios syntax
       const res = await axios.post(
         `${API_URL}/auth/withdraw`,
-        { amount: parseFloat(withdrawAmount) }, // Request body
-        { headers: { Authorization: `Bearer ${token}` } } // Headers
+        { amount: withdrawValue },
+        { headers: { Authorization: `Bearer ${token}` } }
       );
 
       if (res.status === 200 || res.status === 201) {
         setMessage("✅ Withdrawal successful!");
-        refreshWalletBalance();
-        setWithdrawAmount(""); // Reset input only on success
+        await refreshWalletBalance();
+        setWithdrawAmount("");
       } else {
         setMessage("❌ Withdrawal failed. Please try again.");
       }
-    } catch (error) {
+    } catch (error: unknown) {
       console.error("Wallet connection failed:", error);
       setMessage("❌ Withdraw failed!");
     }
@@ -233,6 +236,7 @@ export default function Blackjack() {
 
     try {
       const token = localStorage.getItem("token");
+      if (!token) throw new Error("No token found");
       const res = await axios.post(
         `${API_URL}/blackjack/start`,
         { betAmount },
@@ -245,9 +249,9 @@ export default function Blackjack() {
       setGameStatus(game.gameStatus);
       setMessage(message);
       await fetchBalances();
-    } catch (err: any) {
+    } catch (err: unknown) {
       console.error("Start game failed:", err);
-      setMessage(err.response?.data?.error || "❌ Failed to start game");
+      setMessage((err as any)?.response?.data?.error || "❌ Failed to start game");
     }
   };
 
@@ -256,6 +260,7 @@ export default function Blackjack() {
     if (gameStatus !== 0) return;
     try {
       const token = localStorage.getItem("token");
+      if (!token) throw new Error("No token found");
       const res = await axios.post(
         `${API_URL}/blackjack/hit`,
         {},
@@ -268,9 +273,9 @@ export default function Blackjack() {
       setGameStatus(game.gameStatus);
       setMessage(message);
       await fetchBalances();
-    } catch (err: any) {
+    } catch (err: unknown) {
       console.error("Hit failed:", err);
-      setMessage(err.response?.data?.error || "❌ Hit failed");
+      setMessage((err as any)?.response?.data?.error || "❌ Hit failed");
     }
   };
 
@@ -279,6 +284,7 @@ export default function Blackjack() {
     if (gameStatus !== 0) return;
     try {
       const token = localStorage.getItem("token");
+      if (!token) throw new Error("No token found");
       const res = await axios.post(
         `${API_URL}/blackjack/stand`,
         {},
@@ -291,9 +297,9 @@ export default function Blackjack() {
       setGameStatus(game.gameStatus);
       setMessage(message);
       await fetchBalances();
-    } catch (err: any) {
+    } catch (err: unknown) {
       console.error("Stand failed:", err);
-      setMessage(err.response?.data?.error || "❌ Stand failed");
+      setMessage((err as any)?.response?.data?.error || "❌ Stand failed");
     }
   };
 
@@ -302,6 +308,7 @@ export default function Blackjack() {
     if (gameStatus !== 0) return;
     try {
       const token = localStorage.getItem("token");
+      if (!token) throw new Error("No token found");
       const res = await axios.post(
         `${API_URL}/blackjack/split`,
         {},
@@ -314,9 +321,9 @@ export default function Blackjack() {
       setGameStatus(game.gameStatus);
       setMessage(message);
       await fetchBalances();
-    } catch (err: any) {
+    } catch (err: unknown) {
       console.error("Split failed:", err);
-      setMessage(err.response?.data?.error || "❌ Split failed");
+      setMessage((err as any)?.response?.data?.error || "❌ Split failed");
     }
   };
 
@@ -325,6 +332,7 @@ export default function Blackjack() {
     if (gameStatus !== 0) return;
     try {
       const token = localStorage.getItem("token");
+      if (!token) throw new Error("No token found");
       const res = await axios.post(
         `${API_URL}/blackjack/double`,
         {},
@@ -337,9 +345,9 @@ export default function Blackjack() {
       setGameStatus(game.gameStatus);
       setMessage(message);
       await fetchBalances();
-    } catch (err: any) {
+    } catch (err: unknown) {
       console.error("Double failed:", err);
-      setMessage(err.response?.data?.error || "❌ Double failed");
+      setMessage((err as any)?.response?.data?.error || "❌ Double failed");
     }
   };
 
@@ -367,7 +375,7 @@ export default function Blackjack() {
     if (walletConnected) {
       fetchBalances();
     }
-  }, [walletConnected]);
+  }, [walletConnected, fetchBalances]);
 
   return (
     <div className="blackjack-container">
@@ -387,7 +395,13 @@ export default function Blackjack() {
       </div>
 
       <div>
-        <img src="/images/fly-01_ohneHintergrund_front.png" alt="FLY" className="fly-image" />
+        <Image
+          src="/images/fly-01_ohneHintergrund_front.png"
+          alt="FLY"
+          className="fly-image"
+          width={500}
+          height={500}
+        />
       </div>
 
       <div className="refresh-button-container">
@@ -432,7 +446,7 @@ export default function Blackjack() {
 
       <div className="hand-container">
         <div className="dealer-hand-container">
-          <h2>Dealer's Hand</h2>
+          <h2>Dealer&#39;s Hand</h2>
           <div className="cards">
             {dealerHand.map((card, index) => (
               <div key={index} className="card">{card.name}</div>
@@ -442,7 +456,7 @@ export default function Blackjack() {
         </div>
 
         <div className="player-hand-container">
-          <h2>Player's Hand</h2>
+          <h2>Player&#39;s Hand</h2>
           <div className="cards">
             {playerHand.map((card, index) => (
               <div key={index} className="card">{card.name}</div>
