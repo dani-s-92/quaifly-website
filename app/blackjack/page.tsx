@@ -36,7 +36,7 @@ export default function Blackjack() {
   const [depositBtnLoading, setDepositBtnLoading] = useState<boolean>(false);
   const [withdrawBtnLoading, setWithdrawBtnLoading] = useState<boolean>(false);
 
-  const API_URL = "http://localhost:8080/api";
+  const API_URL = "http://167.86.70.62:8080/api";
 
   // Check for existing connection on page load
   useEffect(() => {
