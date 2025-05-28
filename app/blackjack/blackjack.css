@@ -18,17 +18,14 @@ body {
     margin-bottom: 0px; /* 🔽 Reduziert Abstand zwischen den Zeilen */
 }
 
-/*.blackjack-header {
+.blackjack-header {
     position: relative; /* ✅ Verhindert Überlappungen */
-    /*width: 100%;
+    width: 100%;
     text-align: center;
     font-size: 22px;
     font-weight: bold;
     margin-top: 150px; /* 🔽 Fügt mehr Abstand nach oben hinzu */
-    /*color: white;
-}*/
-.blackjack-header {
-    margin-top: 10px;
+    color: white;
 }
 
 .refresh-button-container {
