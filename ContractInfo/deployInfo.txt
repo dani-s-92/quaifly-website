@@ -1,0 +1,7 @@
+https://orchard.rpc.quai.network
+0x7d55d97de3b698f0dfb8855abfe92a367b9ffb01286589ebd26a5ad891f4aefe
+File added with CID: QmS4uiHtM5PchnDwzJKDZnXkPc2JyzUQVU9Vs1NTXggDGo
+Original IPFS hash found in bytecode: QmS4uiHtM5PchnDwzJKDZnXkPc2JyzUQVU9Vs1NTXggDGo
+Metadata JSON for Blackjack saved to C:\Users\danis\QuaiDevelopment\quaifly-website\NEW\quaifly-website\ContractInfo\hardhat-example\Solidity\metadata\Blackjack_metadata.json
+Transaction broadcasted:  0x000a00556eacc3a799f8f79380a4e3e9bbdd7762815314ef31f35b479e40bad3
+Contract deployed to:  0x007D6661c37Edbe1837c90cb2797e9e691951671

@@ -5,23 +5,31 @@
     "type": "constructor"
   },
   {
-    "anonymous": false,
     "inputs": [
       {
-        "indexed": true,
         "internalType": "address",
-        "name": "player",
+        "name": "owner",
         "type": "address"
-      },
-      {
-        "indexed": false,
-        "internalType": "uint256",
-        "name": "amount",
-        "type": "uint256"
       }
     ],
-    "name": "BetPlaced",
-    "type": "event"
+    "name": "OwnableInvalidOwner",
+    "type": "error"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "account",
+        "type": "address"
+      }
+    ],
+    "name": "OwnableUnauthorizedAccount",
+    "type": "error"
+  },
+  {
+    "inputs": [],
+    "name": "ReentrancyGuardReentrantCall",
+    "type": "error"
   },
   {
     "anonymous": false,
@@ -29,7 +37,7 @@
       {
         "indexed": true,
         "internalType": "address",
-        "name": "player",
+        "name": "user",
         "type": "address"
       },
       {
@@ -48,7 +56,7 @@
       {
         "indexed": true,
         "internalType": "address",
-        "name": "player",
+        "name": "owner",
         "type": "address"
       },
       {
@@ -58,7 +66,7 @@
         "type": "uint256"
       }
     ],
-    "name": "Payout",
+    "name": "OwnerWithdrawn",
     "type": "event"
   },
   {
@@ -67,7 +75,26 @@
       {
         "indexed": true,
         "internalType": "address",
-        "name": "player",
+        "name": "previousOwner",
+        "type": "address"
+      },
+      {
+        "indexed": true,
+        "internalType": "address",
+        "name": "newOwner",
+        "type": "address"
+      }
+    ],
+    "name": "OwnershipTransferred",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": true,
+        "internalType": "address",
+        "name": "user",
         "type": "address"
       },
       {
@@ -77,70 +104,19 @@
         "type": "uint256"
       }
     ],
-    "name": "Withdrawal",
+    "name": "WithdrawalProcessed",
     "type": "event"
   },
   {
-    "inputs": [
-      {
-        "internalType": "address",
-        "name": "",
-        "type": "address"
-      }
-    ],
-    "name": "balances",
-    "outputs": [
-      {
-        "internalType": "uint256",
-        "name": "",
-        "type": "uint256"
-      }
-    ],
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
     "inputs": [],
-    "name": "betAmount",
-    "outputs": [
-      {
-        "internalType": "uint256",
-        "name": "",
-        "type": "uint256"
-      }
-    ],
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "inputs": [],
-    "name": "contractBalance",
-    "outputs": [
-      {
-        "internalType": "uint256",
-        "name": "",
-        "type": "uint256"
-      }
-    ],
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "inputs": [],
-    "name": "depositFunds",
+    "name": "deposit",
     "outputs": [],
     "stateMutability": "payable",
     "type": "function"
   },
   {
-    "inputs": [
-      {
-        "internalType": "address",
-        "name": "player",
-        "type": "address"
-      }
-    ],
-    "name": "getBalance",
+    "inputs": [],
+    "name": "getContractBalance",
     "outputs": [
       {
         "internalType": "uint256",
@@ -165,21 +141,8 @@
     "type": "function"
   },
   {
-    "inputs": [
-      {
-        "internalType": "address",
-        "name": "winner",
-        "type": "address"
-      }
-    ],
-    "name": "payoutWinner",
-    "outputs": [],
-    "stateMutability": "nonpayable",
-    "type": "function"
-  },
-  {
     "inputs": [],
-    "name": "placeBet",
+    "name": "renounceOwnership",
     "outputs": [],
     "stateMutability": "nonpayable",
     "type": "function"
@@ -188,19 +151,13 @@
     "inputs": [
       {
         "internalType": "address",
-        "name": "",
+        "name": "newOwner",
         "type": "address"
       }
     ],
-    "name": "playerBets",
-    "outputs": [
-      {
-        "internalType": "uint256",
-        "name": "",
-        "type": "uint256"
-      }
-    ],
-    "stateMutability": "view",
+    "name": "transferOwnership",
+    "outputs": [],
+    "stateMutability": "nonpayable",
     "type": "function"
   },
   {
@@ -211,7 +168,25 @@
         "type": "uint256"
       }
     ],
-    "name": "withdrawFunds",
+    "name": "withdraw",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "user",
+        "type": "address"
+      },
+      {
+        "internalType": "uint256",
+        "name": "amount",
+        "type": "uint256"
+      }
+    ],
+    "name": "withdrawToUser",
     "outputs": [],
     "stateMutability": "nonpayable",
     "type": "function"
