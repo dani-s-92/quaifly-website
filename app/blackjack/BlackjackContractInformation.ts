@@ -193,6 +193,6 @@ const BlackjackABI = [
   }
 ]
 
-const BlackjackContractAdress = "0x004D4E252aCb397E95DfBa84F7a882D962237cbb";
+const BlackjackContractAdress = "0x007D6661c37Edbe1837c90cb2797e9e691951671";
 
 export { BlackjackContractAdress, BlackjackABI };
