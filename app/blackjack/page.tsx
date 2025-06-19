@@ -78,6 +78,7 @@ export default function Blackjack() {
 
   // Connect wallet and authenticate with backend
   const connectWallet = async () => {
+    console.log("connectWallet triggered!")
     if (!window.pelagus) {
       setMessage("❌ No Web3 wallet detected! Please install MetaMask or Pelagus.");
       return;
@@ -88,13 +89,16 @@ export default function Blackjack() {
       console.log(contractABI)
       
       const provider = new quais.BrowserProvider(window.pelagus);
+      setMessage("provider"+ provider);
       const signer = await provider.getSigner();
       console.log(signer)
       setSigner(signer);
       const blackjackContract = new quais.Contract(contractAddress, contractABI, signer);
+      setMessage("blackjackContract"+ blackjackContract);
       setContract(blackjackContract);
       console.log(blackjackContract)
       const address = await signer.getAddress();
+      setMessage("address"+ address);
       console.log(address)
       setAddress(address); // Use the address
       setShortAddress(`${address.slice(0, 6)}...${address.slice(-4)}`);
@@ -109,6 +113,7 @@ export default function Blackjack() {
 
       // Login to backend
       const loginRes = await axios.post(`${API_URL}/auth/login`, { address, signature });
+      setMessage("Login Reults"+ loginRes);
       localStorage.setItem("token", loginRes.data.token);
       setWalletConnected(true);
       setMessage("✅ Wallet connected!");
