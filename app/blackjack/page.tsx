@@ -84,13 +84,18 @@ export default function Blackjack() {
     }
 
     try {
+      console.log(contractAddress)
+      console.log(contractABI)
+      
       const provider = new quais.BrowserProvider(window.pelagus);
       const signer = await provider.getSigner();
+      console.log(signer)
       setSigner(signer);
       const blackjackContract = new quais.Contract(contractAddress, contractABI, signer);
       setContract(blackjackContract);
-
+      console.log(blackjackContract)
       const address = await signer.getAddress();
+      console.log(address)
       setAddress(address); // Use the address
       setShortAddress(`${address.slice(0, 6)}...${address.slice(-4)}`);
 
