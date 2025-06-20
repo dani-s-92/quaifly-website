@@ -1,4 +1,5 @@
 "use client";
+
 import { usePathname } from 'next/navigation';
 import Menu from './components/Menu';
 import Footer from './components/Footer';
