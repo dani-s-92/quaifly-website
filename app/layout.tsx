@@ -1,9 +1,11 @@
+"use client";
 import type { Metadata } from 'next'
 import { Plus_Jakarta_Sans } from 'next/font/google'
 import './global.css'
 import Menu from './components/Menu'
 import { ReactLenis } from './utils/lenis'
 import Footer from './components/Footer'
+import { usePathname } from 'next/navigation'; // 👈 Add this too
 
 const plusJakarta = Plus_Jakarta_Sans({
   subsets: ['latin'],
@@ -21,13 +23,13 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode
 }>) {
+  const pathname = usePathname();
   return (
     <html lang="en" className="scroll-smooth">
       <ReactLenis root>
-        <body
-          className={`${plusJakarta.className} antialiased overflow-x-hidden`}
-        >
-          <Menu />
+        <body className={`${plusJakarta.className} antialiased overflow-x-hidden`}>
+          {!pathname.startsWith('/blackjack') && <Menu />}
+          {!pathname.startsWith('/blackjack') && <Footer />}
           {children}
           <Footer />
         </body>
@@ -35,3 +37,12 @@ export default function RootLayout({
     </html>
   )
 }
+/*
+<body
+          className={`${plusJakarta.className} antialiased overflow-x-hidden`}
+        >
+          <Menu />
+          {children}
+          <Footer />
+        </body>
+*/
