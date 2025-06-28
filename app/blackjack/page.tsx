@@ -172,9 +172,10 @@ export default function Blackjack() {
 
     try {
       const depositValue = ethers.parseEther(depositAmount);
-      const estimatedGas = await contract.deposit.estimateGas({ value: depositValue });
+      //const estimatedGas = await contract.deposit.estimateGas({ value: depositValue });
 
-      const tx = await contract.deposit({ value: depositValue, gasLimit: estimatedGas });
+      //const tx = await contract.deposit({ value: depositValue, gasLimit: estimatedGas });
+      const tx = await contract.deposit({ value: depositValue });
       await tx.wait();
 
       setMessage(`✅ Deposited ${depositAmount} QUAI successfully!`);
