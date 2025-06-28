@@ -156,6 +156,7 @@ export default function Blackjack() {
 
   // Handle deposit (mocked, as backend doesn't support this yet)
   const handleDeposit = async () => {
+    console.log("Contract address:", contract?.target || contract?.address);
     setDepositBtnLoading(true);
     if (!contract || !signer) {
       setMessage("❌ Wallet not connected!");
